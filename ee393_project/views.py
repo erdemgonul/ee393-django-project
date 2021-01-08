@@ -46,7 +46,7 @@ def solve(request):
     print(numbers)
 
     
-    if(func=='sum'):
+    if(func=='add'):
         result=add(numbers)
     elif(func=='find_max'):
         result=find_max(numbers)
@@ -173,7 +173,7 @@ def basicCalculationsSetter(func):
     print([funcName,description])
     return [funcName,description]
 def staticCalculationsSetter(func):
-    if func=='sum':
+    if func=='add':
         funcName='Sum All Numbers'
         description='Sum of all numbers, write numbers in format 1,3,4,7 put commas between'
     if func=='find_min':
@@ -246,7 +246,7 @@ def complexCalculationSetter(func):
     return [funcName,description]
 
 
-def sum(numbers):
+def add(numbers):
     return sum(numbers)
 
 def find_max(numbers):

@@ -10,16 +10,16 @@ MathFormulaWeb is a Python Django Web Application Project for solving some gener
 
 ## Installation
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install Django.
-
+I assumed pip is already installed. If not install pip first [https://pip.pypa.io/en/stable/installing/](https://pip.pypa.io/en/stable/installing/)
+Install necessary libraries using below snippet from terminal
 ```bash
-pip install Django
+pip install -r requirements.txt
 ```
 
 ## Start Project From Your Terminal In Project's Root Path ./ee393project/
 
 ```python
-python manage.py runserver
+python3 manage.py runserver
 ```
 
 ## Usage
