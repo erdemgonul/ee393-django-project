@@ -1,6 +1,6 @@
 # MathFormulaWeb
 
-MathFormulaWeb is a Python Django Web Application Project for solving some general mathematical problems.
+MathFormulaWeb is a Python Django Web Application Project for solving some general mathematical problems. Github repo of the project :[https://github.com/erdemgonul/ee393-django-project](https://github.com/erdemgonul/ee393-django-project) 
 
 ### Contributions:
 #### Ahmet Erdem Gönül S012003 : Writing Django Web Application and merge the python functions which are written in ipynb to Django Python formats.
