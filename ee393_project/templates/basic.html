@@ -1,0 +1,140 @@
+{% load static %}
+
+<html>
+
+<head>
+  <title>Math Formula Web</title>
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+
+<body>
+  <div class="flex flex-col mx-auto ">
+    <div class="relative flex items-center justify-between h-16 bg-gray-900 px-2 sm:px-6 lg:px-8 ">
+
+      <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+        <div class="flex-shrink-0 flex items-center">
+          <h1 class="text-white text-2xl font-bolder">mathformula</h1>
+        </div>
+        <div class="sm:ml-6 justify-between flex w-full">
+          <div class="sm:ml-6 justify-between flex w-full">
+            <div class="flex space-x-4">
+              <a href="/" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">Statistics Calculator</a>
+              <a href="basic" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">Basic Calculator</a>
+              <a href="complex" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">Complex Calculator</a>
+              <a href="trigonometry" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">Trigonometry</a>
+            </div>
+          </div>
+         
+        </div>
+      </div>
+
+    </div>
+    <div class="container flex flex-col justify-center items-center py-4 mx-auto">
+      <div class="flex text-left my-20">
+        <h1 class="text-2xl font-bold">Basic Calculator</h1>
+      </div>
+
+
+      <!--  Addition Input  -->
+      <div class="flex mb-4 space-x-4">
+        <form action="setFunc" method="POST">
+          {% csrf_token %}
+
+          <input type="hidden" value="addition" name="value" />
+          <button type="submit" class="border-2 rounded-lg p-2 text-lg">Addition</button>
+        </form>
+
+
+        <!--  Subtraction Input  -->
+
+        <form action="setFunc" method="POST">
+          {% csrf_token %}
+
+          <input type="hidden" value="subtraction" name="value" />
+          <button type="submit" class="border-2 rounded-lg p-2 text-lg">Subtraction</button>
+        </form>
+
+
+        <!--  Multiplication Input  -->
+        <form action="setFunc" method="POST">
+          {% csrf_token %}
+
+          <input type="hidden" value="multiplication" name="value" />
+          <button type="submit" class="border-2 rounded-lg p-2 text-lg">Multiplication</button>
+        </form>
+
+
+        <!--  Squaring Input  -->
+        <form action="setFunc" method="POST">
+          {% csrf_token %}
+
+          <input type="hidden" value="squaring" name="value" />
+          <button type="submit" class="border-2 rounded-lg p-2 text-lg">Squaring</button>
+        </form>
+
+        <!--  Mode Input  -->
+        <form action="setFunc" method="POST">
+          {% csrf_token %}
+
+          <input type="hidden" value="finding_factorial" name="value" />
+          <button type="submit" class="border-2 rounded-lg p-2 text-lg">Finding Factorial</button>
+        </form>
+
+        <!--  Exponentiation Input  -->
+        <form action="setFunc" method="POST">
+          {% csrf_token %}
+
+          <input type="hidden" value="exponentiation" name="value" />
+          <button type="submit" class="border-2 rounded-lg p-2 text-lg">Exponentiation</button>
+        </form>
+
+        <!--  Average Input  -->
+        <form action="setFunc" method="POST">
+          {% csrf_token %}
+
+          <input type="hidden" value="hypotenuse" name="value" />
+          <button type="submit" class="border-2 rounded-lg p-2 text-lg">Hypotenuse</button>
+        </form>
+
+        <!--  Perimeter of a cube Input  -->
+        <form action="setFunc" method="POST">
+          {% csrf_token %}
+
+          <input type="hidden" value="perimeter_of_a_cube" name="value" />
+          <button type="submit" class="border-2 rounded-lg p-2 text-lg">Perimeter of a cube</button>
+        </form>
+
+
+        <!--  Area of a circle Input  -->
+        <form action="setFunc" method="POST">
+          {% csrf_token %}
+
+          <input type="hidden" value="area_of_a_circle" name="value" />
+          <button type="submit" class="border-2 rounded-lg p-2 text-lg">Area of a circle</button>
+        </form>
+
+      </div>
+
+      <div class="flex w-3/6">
+        <form action="solve" method="POST">
+          <input type="hidden" name="func" value="{{func}}" />
+          {% csrf_token %}
+          {{funcName}}
+          <input type="text" name="numbers" class=" border-2 w-full h-12 border-gray-400 rounded-md px-4"
+            placeholder="Enter a problem" />
+          {{description}}
+          <button type="submit"
+            class="border-2 rounded-lg bg-red-500 text-white px-8 py-3 h-12 ml-1 font-bold self-center">Solve</button>
+      </div>
+      <div class="flex w-3/6 mt-20">
+        <h1 class="text-xl font-bold">Solution:</h1>
+        <p class="">{{result}}</p>
+      </div>
+    </div>
+
+  </div>
+</body>
+
+</html>

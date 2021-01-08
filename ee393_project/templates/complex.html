@@ -1,0 +1,93 @@
+{% load static %}
+
+<html>
+
+<head>
+  <title>Math Formula Web</title>
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+
+<body>
+  <div class="flex flex-col mx-auto ">
+    <div class="relative flex items-center justify-between h-16 bg-gray-900 px-2 sm:px-6 lg:px-8 ">
+
+      <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+        <div class="flex-shrink-0 flex items-center">
+          <h1 class="text-white text-2xl font-bolder">mathformula</h1>
+        </div>
+        <div class="sm:ml-6 justify-between flex w-full">
+          <div class="sm:ml-6 justify-between flex w-full">
+            <div class="flex space-x-4">
+              <a href="/" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">Statistics
+                Calculator</a>
+              <a href="basic" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">Basic
+                Calculator</a>
+              <a href="complex" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">Complex
+                Calculator</a>
+              <a href="trigonometry"
+                class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">Trigonometry</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+    <div class="container flex flex-col justify-center items-center py-4 mx-auto">
+      <div class="flex text-left my-20">
+        <h1 class="text-2xl font-bold">Complex Calculator</h1>
+      </div>
+
+
+      <!--  Solve Derivation Input  -->
+      <div class="flex mb-4 space-x-4">
+        <form action="setFunc" method="POST">
+          {% csrf_token %}
+
+          <input type="hidden" value="solDer" name="value" />
+          <button type="submit" class="border-2 rounded-lg p-2 text-lg">Solve Derivation</button>
+        </form>
+
+
+        <!--  Solve Limit Input  -->
+
+        <form action="setFunc" method="POST">
+          {% csrf_token %}
+
+          <input type="hidden" value="solLimit" name="value" />
+          <button type="submit" class="border-2 rounded-lg p-2 text-lg">Solve Limit</button>
+        </form>
+
+
+        <!--  Draw Graph Input  -->
+        <form action="setFunc" method="POST">
+          {% csrf_token %}
+
+          <input type="hidden" value="drawGraph" name="value" />
+          <button type="submit" class="border-2 rounded-lg p-2 text-lg">Draw Graph</button>
+        </form>
+      </div>
+
+      <div class="flex w-3/6">
+        <form action="solve" method="POST">
+          <input type="hidden" name="func" value="{{func}}" />
+          {% csrf_token %}
+          {{funcName}}
+          <input type="text" name="numbers" class=" border-2 w-full h-12 border-gray-400 rounded-md px-4"
+            placeholder="Enter a problem" />
+          {{description}}
+          <button type="submit"
+            class="border-2 rounded-lg bg-red-500 text-white px-8 py-3 h-12 ml-1 font-bold self-center">Solve</button>
+      </div>
+      <div class="flex w-3/6 mt-20">
+        <h1 class="text-xl font-bold">Solution:</h1>
+        <p class="">{{result}}</p>
+      </div>
+    </div>
+
+  </div>
+</body>
+
+</html>
