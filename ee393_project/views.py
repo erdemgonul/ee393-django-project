@@ -41,7 +41,7 @@ def solve(request):
     print(numbersRaw)
     print(func)
     numbers=0
-    if(not func == 'solDer' and not func == 'solLimit'):
+    if(not func == 'solDer' and not func == 'solLimit' and not func== 'solIntegral'):
         numbers = [int(x) for x in numbersRaw.split(",")]
     print(numbers)
 
@@ -106,7 +106,14 @@ def solve(request):
         result=solDer(numbersRaw)
     elif(func=='solLimit'):
         result=solLimit(numbersRaw)
-
+    elif(func=='solIntegral'):
+        result=solIntegral(numbersRaw)
+    elif(func=='Fibonacci'):
+        result=Fibonacci(numbers[0])
+    elif(func=='isFibonacci'):
+        result=isFibonacci(numbers[0])
+    elif(func=='nearestFibonacci'):
+        result=nearestFibonacci(numbers[0])
     return render(request, currentPage+".html", {"result": result})
 
 @csrf_protect
@@ -222,8 +229,19 @@ def complexCalculationSetter(func):
         description="Example INPUTS:  x^2+1 , sin(x)+x**3"
     if func=='solLimit':
         funcName='Solve Limit'
-        description='Example INPUTS:  2 0 x^2+1dx , 2 0 x^2+1'
-   
+        description='Example INPUTS:  2 x^2+1  , 0 1/x'
+    if func=='solIntegral':
+        funcName='Solve Integral'
+        description='Example INPUTS:  2 0 x^2+1 or 1 0 sin(x)'
+    if func=='Fibonacci':
+        funcName='Enter the fibonacci index to get that fibonacci number'
+        description='Example INPUT:  5'
+    if func=='isFibonacci':
+        funcName='Check is the given number is a Fibonacci Number'
+        description='Example INPUT:  5'
+    if func=='nearestFibonacci':
+        funcName='Return the nearest fibonnaci number to given input'
+        description='Example INPUT:  5'
     print([funcName,description])
     return [funcName,description]
 
@@ -391,3 +409,99 @@ def solLimit(function):
         mesage = "Check your input"
         return mesage
         print(mesage)
+
+def drawGraph(function):
+    arr = []
+    try:
+
+        tmp = function.split(' ')
+        name = ""
+        if (len(tmp) == 2):
+            ran = np.array(range(int(tmp[0])))
+            y = sympify(tmp[1])
+            name = tmp[1]
+        else:
+            ran = np.array(range(100))
+            y = sympify(function)
+            name = function
+        fig = plt.figure(figsize=(3, 3), dpi=120,
+                         facecolor="lightblue", edgecolor="lightgrey", linewidth=5)
+
+        x = Symbol('x')
+        ax = fig.add_axes([0, 0, 1, 1])
+        for i in ran:
+            arr.append(y.subs(x, i))
+        title = "Graph of " + name
+        ax.set_title(title)
+        plt.plot(ran, arr)
+        fig.savefig('graph.png')
+        return fig
+    except (SympifyError, TypeError) as e:
+        mesage = "Check your input"
+        return mesage
+        print(mesage)
+
+
+# Function for nth Fibonacci number
+ 
+def Fibonacci(n):
+    if n<=0:
+        print("Incorrect input")
+    # First Fibonacci number is 0
+    elif n==1:
+        return 0
+    # Second Fibonacci number is 1
+    elif n==2:
+        return 1
+    else:
+        return Fibonacci(n-1)+Fibonacci(n-2)
+
+def isFibonacci(n):
+    n1, n2 = 0, 1
+    while True:
+        nth = n1 + n2
+        n1 = n2
+        n2 = nth
+        if nth==n:
+            return True
+            break
+        if nth>n:
+            return False
+            break
+
+def nearestFibonacci(n):
+    n1, n2 = 0, 1
+    while True:
+        nth = n1 + n2
+        n1 = n2
+        n2 = nth
+        a=n2-n1
+        if nth==n:
+            return n
+            break
+        if nth>n:
+            a=nth-n
+            b=n-n1
+            if a<b:
+                return n2
+                break
+            else:
+                print("l am here")
+                return n1
+                break
+
+def solIntegral(function):
+    try:
+        tmp = function.split(" ")
+        x = Symbol('x')
+        if(len(tmp) == 3):
+            upper_bound = sympify(tmp[0])
+            lower_bound = sympify(tmp[1])
+            converted = sympify(tmp[2])
+            answ = integrate(converted,(x,lower_bound,upper_bound))
+            return answ
+        else:
+            return "You entered your equation in unsuported format please check your equation"
+    except (SympifyError ,TypeError) as e:
+            mesage = "Check your input"
+            return mesage

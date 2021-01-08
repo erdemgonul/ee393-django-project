@@ -4,7 +4,7 @@ MathFormulaWeb is a Python Django Web Application Project for solving some gener
 
 ### Contributions:
 #### Ahmet Erdem Gönül S012003 : Writing Django Web Application and merge the python functions which are written in ipynb to Django Python formats.
-#### Denizcan Özpınar S014290 : limits,  derivatives.
+#### Denizcan Özpınar S014290 : Writing codes for limits, derivatives, integrals and drawing graph functions.
 #### Açelya Kurtay S006850 : Writing codes for basic arithmetic operators, area and perimeter calculations of circle and cube, and trigonometric analysis
 #### Ayhan Güler S017808 : writing codes for statistical operations such as standard deviation, variation
 

@@ -60,13 +60,37 @@
           <button type="submit" class="border-2 rounded-lg p-2 text-lg">Solve Limit</button>
         </form>
 
+        <!--  Solve Limit Input  -->
+
+        <form action="setFunc" method="POST">
+          {% csrf_token %}
+
+          <input type="hidden" value="solIntegral" name="value" />
+          <button type="submit" class="border-2 rounded-lg p-2 text-lg">Solve Integral</button>
+        </form>
 
         <!--  Draw Graph Input  -->
         <form action="setFunc" method="POST">
           {% csrf_token %}
 
-          <input type="hidden" value="drawGraph" name="value" />
-          <button type="submit" class="border-2 rounded-lg p-2 text-lg">Draw Graph</button>
+          <input type="hidden" value="Fibonacci" name="value" />
+          <button type="submit" class="border-2 rounded-lg p-2 text-lg">Fibonacci</button>
+        </form>
+
+        <!--  Draw Graph Input  -->
+        <form action="setFunc" method="POST">
+          {% csrf_token %}
+
+          <input type="hidden" value="isFibonacci" name="value" />
+          <button type="submit" class="border-2 rounded-lg p-2 text-lg">Is Number Fibonacci</button>
+        </form>
+
+        <!--  Draw Graph Input  -->
+        <form action="setFunc" method="POST">
+          {% csrf_token %}
+
+          <input type="hidden" value="nearestFibonacci" name="value" />
+          <button type="submit" class="border-2 rounded-lg p-2 text-lg">Nearest Fibonacci</button>
         </form>
       </div>
 
